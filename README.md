@@ -46,6 +46,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 which is a shortcut that does the following:
 
 * `git checkout gh-pages`
+* `git merge master -m "merge master and prepare to deploy"`
 * `ember build --environment production`
 * `git add dist --force`
 * `git commit -m "deploy to gh-pages"`
