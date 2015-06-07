@@ -1,3 +1,17 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<header>
+    <h1>Sjekk Området</h1>
+</header>
 
-{{outlet}}
+<div>
+  {{input type="text" value=search action="query" on="enter" placeholder=placeholder}}
+    <button {{action 'query'}}><i class="fa fa-search"></i></button>
+    <button {{action 'geoQuery'}}><i class="fa fa-map-marker"></i></button>
+</div>
+
+<div>
+  {{outlet}}
+</div>
+
+<footer>
+    &copy;2015 <a href="https://github.com/kenglxn">@kenglxn</a>
+</footer>
