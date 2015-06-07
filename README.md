@@ -41,15 +41,15 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
+* `npm run-script deploy-gh`
+
+which is a shortcut that does the following:
+
 * `git checkout gh-pages`
 * `ember build --environment production`
 * `git add dist --force`
 * `git commit -m "deploy to gh-pages"`
 * `git subtree push --prefix dist origin gh-pages`
-
-or simply do
-
-* `npm run-script deploy-gh`
 
 ## Further Reading / Useful Links
 
