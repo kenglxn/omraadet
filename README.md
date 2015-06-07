@@ -47,6 +47,10 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `git commit -m "deploy to gh-pages"`
 * `git subtree push --prefix dist origin gh-pages`
 
+or simply do
+
+* `npm run-script deploy-gh`
+
 ## Further Reading / Useful Links
 
 * [ember.js](http://emberjs.com/)
