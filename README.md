@@ -41,7 +41,11 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* `git checkout gh-pages`
+* `ember build --environment production`
+* `git add dist --force`
+* `git commit -m "deploy to gh-pages"`
+* `git subtree push --prefix dist origin gh-pages`
 
 ## Further Reading / Useful Links
 
