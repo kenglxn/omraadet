@@ -1,17 +1,36 @@
-<header>
-    <h1>Sjekk Området</h1>
-</header>
+<div class="container text-center">
+    <header>
+        <h1>
+            <i class="fa fa-check"></i>
+            Sjekk Området
+            <i class="fa fa-globe"></i>
+        </h1>
+    </header>
 
-<div>
-  {{input type="text" value=search action="query" on="enter" placeholder=placeholder}}
-    <button {{action 'query'}}><i class="fa fa-search"></i></button>
-    <button {{action 'geoQuery'}}><i class="fa fa-map-marker"></i></button>
-</div>
+    <form class="form center-block">
+            <div class="input-group">
+              {{#if searching}}
+                <div class="input-group-addon">
+                    <i class="fa fa-cog fa-spin"></i>
+                </div>
+              {{/if}}
+              {{input type="text" value=search action="query" on="enter" placeholder=placeholder class="form-control"}}
+                <div {{action 'query'}}
+                        class="input-group-addon">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div {{action 'geoQuery'}}
+                        class="geo-query input-group-addon">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+    </form>
 
-<div>
   {{outlet}}
+
+    <footer>
+        &copy;2015 <a href="https://github.com/kenglxn">@kenglxn</a>
+    </footer>
 </div>
 
-<footer>
-    &copy;2015 <a href="https://github.com/kenglxn">@kenglxn</a>
-</footer>
+

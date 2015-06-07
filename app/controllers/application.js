@@ -2,6 +2,7 @@ export default Ember.Controller.extend({
   queryParams: ['q'],
   placeholder: 'f.eks: Oslo',
   search: null,
+  searching: false,
 
   actions: {
     query: function () {
@@ -9,12 +10,15 @@ export default Ember.Controller.extend({
           query = controller.get('search');
       console.log("query: %s", query);
       if (query) {
-        this.transitionToRoute({queryParams: {q: query}});
+        // TODO use googleapis to get match
+        controller.transitionToRoute({queryParams: {q: query}});
       }
     },
     geoQuery: function () {
       var controller = this;
+      console.log("geoquery");
       navigator.geolocation.getCurrentPosition(function (pos) {
+        controller.set('searching', true);
         Ember.$.getJSON(
           'https://maps.googleapis.com/maps/api/geocode/json',
           {
@@ -24,7 +28,8 @@ export default Ember.Controller.extend({
             var town = data.results.filter(function (r) {
               return r.types[0] === 'postal_town';
             });
-            controller.set('search', town[0].formatted_address);
+            controller.set('searching', false);
+            controller.transitionToRoute({queryParams: {q: town[0].formatted_address}});
           }
         );
       });
