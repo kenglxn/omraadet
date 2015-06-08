@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
       queryObj,
       function (data) {
         controller.set('searching', false);
+        controller.set('search', data.results[0].formatted_address);
         controller.set('gmapsMeta', data.results[0]); // TODO build object from results { city:x, kommune:x, region:x }
         controller.transitionToRoute({queryParams: {q: data.results[0].formatted_address}});
       }
