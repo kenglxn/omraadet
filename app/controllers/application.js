@@ -1,8 +1,9 @@
 export default Ember.Controller.extend({
-  queryParams: ['q'],
-  placeholder: 'f.eks: Oslo',
   search: null,
   searching: false,
+  queryParams: ['q'],
+  placeholder: 'f.eks: Oslo',
+  isGeoEnabled: window.navigator.geolocation,
 
   actions: {
     query: function () {

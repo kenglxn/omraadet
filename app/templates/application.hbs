@@ -19,10 +19,12 @@
                         class="input-group-addon action">
                     <i class="fa fa-search"></i>
                 </span>
+              {{#if isGeoEnabled }}<!--TODO: how to check this?-->
                 <span {{action 'geoQuery'}}
                         class="input-group-addon action">
                     <i class="fa fa-map-marker"></i>
                 </span>
+              {{/if}}
             </div>
     </form>
 
