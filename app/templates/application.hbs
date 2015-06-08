@@ -15,14 +15,14 @@
                 </div>
               {{/if}}
               {{input type="text" value=search action="query" on="enter" placeholder=placeholder class="form-control"}}
-                <div {{action 'query'}}
-                        class="input-group-addon">
+                <span {{action 'query'}}
+                        class="input-group-addon action">
                     <i class="fa fa-search"></i>
-                </div>
-                <div {{action 'geoQuery'}}
-                        class="geo-query input-group-addon">
+                </span>
+                <span {{action 'geoQuery'}}
+                        class="input-group-addon action">
                     <i class="fa fa-map-marker"></i>
-                </div>
+                </span>
             </div>
     </form>
 
