@@ -8,7 +8,8 @@ module.exports = function(environment) {
     locationType: 'auto',
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'connect-src': "'self' maps.googleapis.com"
+      'connect-src': "'self' maps.googleapis.com",
+      'font-src': "'self' fonts.gstatic.com"
     },
     EmberENV: {
       FEATURES: {
