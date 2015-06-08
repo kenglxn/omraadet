@@ -31,15 +31,14 @@ export default Ember.Controller.extend({
     },
     geoQuery: function () {
       var controller = this;
-      if (!controller.get('isGeoEnabled')) {
-        return;
-      }
 
-      controller.set('search', "");
-      controller.set('searching', true);
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        controller._queryGmapsApi({latlng: '' + pos.coords.latitude + ',' + pos.coords.longitude});
-      });
+      if (controller.get('isGeoEnabled')) {
+        controller.set('search', "");
+        controller.set('searching', true);
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          controller._queryGmapsApi({latlng: '' + pos.coords.latitude + ',' + pos.coords.longitude});
+        });
+      }
     }
   }
 });
