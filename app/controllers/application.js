@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
       var controller = this,
         query = controller.get('search');
       if (query) {
+        controller.set('failed', false);
         controller.set('searching', true);
         // TODO: perhaps implement multiselect based on gmaps results for address
         controller._queryGmapsApi({address: query});
@@ -34,10 +35,20 @@ export default Ember.Controller.extend({
 
       if (controller.get('isGeoEnabled')) {
         controller.set('search', "");
+        controller.set('failure', false);
         controller.set('searching', true);
-        navigator.geolocation.getCurrentPosition(function (pos) {
-          controller._queryGmapsApi({latlng: '' + pos.coords.latitude + ',' + pos.coords.longitude});
-        });
+
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
+            controller._queryGmapsApi({ latlng: '' + pos.coords.latitude + ',' + pos.coords.longitude });
+          },
+          function (e) {
+            controller.set('searching', false);
+            controller.set('failure', e.message);
+            console.log('unable to get location within timeout', e.message);
+          },
+          {timeout: 10000}
+        );
       }
     }
   }

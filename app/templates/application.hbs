@@ -14,12 +14,17 @@
                     <i class="fa fa-cog fa-spin"></i>
                 </div>
               {{/if}}
+              {{#if failure}}
+                <div class="input-group-addon">
+                    <i class="fa fa-exclamation text-danger" title="{{failure}}"></i>
+                </div>
+              {{/if}}
               {{input type="text" value=search action="query" on="enter" placeholder=placeholder class="form-control"}}
                 <span {{action 'query'}}
                         class="input-group-addon action">
                     <i class="fa fa-search"></i>
                 </span>
-              {{#if isGeoEnabled }}<!--TODO: how to check this?-->
+              {{#if isGeoEnabled }}
                 <span {{action 'geoQuery'}}
                         class="input-group-addon action">
                     <i class="fa fa-map-marker"></i>

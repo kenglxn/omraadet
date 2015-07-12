@@ -9,7 +9,8 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'default-src': "'none'",
       'connect-src': "'self' maps.googleapis.com",
-      'font-src': "'self' fonts.gstatic.com"
+      'font-src': "'self' fonts.gstatic.com",
+      'style-src': "'self' fonts.googleapis.com"
     },
     EmberENV: {
       FEATURES: {
