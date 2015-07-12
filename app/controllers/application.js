@@ -45,9 +45,13 @@ export default Ember.Controller.extend({
           function (e) {
             controller.set('searching', false);
             controller.set('failure', e.message);
-            console.log('unable to get location within timeout', e.message);
+            console.log('unable to get location: ', e.message);
           },
-          {timeout: 10000}
+          {
+            enableHighAccuracy: true,
+            maximumAge        : 30000,
+            timeout           : 27000
+          }
         );
       }
     }
