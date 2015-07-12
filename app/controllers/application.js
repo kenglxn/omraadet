@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
       var controller = this,
         query = controller.get('search');
       if (query) {
-        controller.set('failed', false);
+        controller.set('failure', false);
         controller.set('searching', true);
         // TODO: perhaps implement multiselect based on gmaps results for address
         controller._queryGmapsApi({address: query});
@@ -43,14 +43,16 @@ export default Ember.Controller.extend({
             controller._queryGmapsApi({ latlng: '' + pos.coords.latitude + ',' + pos.coords.longitude });
           },
           function (e) {
-            controller.set('searching', false);
-            controller.set('failure', e.message);
-            console.log('unable to get location: ', e.message);
+            if (controller.get('searching')) {
+              controller.set('searching', false);
+              controller.set('failure', e.message);
+              console.log('unable to get location: ', e.message);
+            }
           },
           {
             enableHighAccuracy: true,
             maximumAge        : 30000,
-            timeout           : 27000
+            timeout           : 15000
           }
         );
       }
